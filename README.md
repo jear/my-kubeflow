@@ -1,4 +1,4 @@
-# my-kubeflow
+# my-kubeflow quick and dirty test
     https://github.com/kubeflow/manifests#installation
     https://github.com/kubeflow/manifests#connect-to-your-kubeflow-cluster
 
