@@ -7,7 +7,8 @@
 
     kubectl edit -n kubeflow gateways.networking.istio.io kubeflow-gateway
 
-# cert-manager
+# cert-manager   
+    https://istio.io/latest/docs/ops/integrations/certmanager/
     k apply -f my-certificate.yaml
 ```
 apiVersion: networking.istio.io/v1alpha3
