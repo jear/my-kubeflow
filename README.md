@@ -1,33 +1,42 @@
 # my-kubeflow quick and dirty test
-    https://github.com/kubeflow/manifests#installation
-    https://github.com/kubeflow/manifests#connect-to-your-kubeflow-cluster
+    # https://github.com/kubeflow/manifests#installation
+    # https://github.com/kubeflow/manifests#connect-to-your-kubeflow-cluster
+
+# cert-manager   
+    # https://istio.io/latest/docs/ops/integrations/certmanager/
+    k apply -f my-certificate.yaml
 
 # Istio Certificates  and to avoid   XSRF-TOKEN errors
-    https://www.civo.com/learn/get-up-and-running-with-kubeflow-on-civo-kubernetes
+    # https://www.civo.com/learn/get-up-and-running-with-kubeflow-on-civo-kubernetes
 
     kubectl edit -n kubeflow gateways.networking.istio.io kubeflow-gateway
 
-# cert-manager   
-    https://istio.io/latest/docs/ops/integrations/certmanager/
-    k apply -f my-certificate.yaml
 ```
-apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: gateway
+  name: kubeflow-gateway
+  namespace: kubeflow
 spec:
   selector:
     istio: ingressgateway
   servers:
-  - port:
-      number: 443
+  - hosts:
+    - '*'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
+  - hosts:
+    - kubeflow.gpu01.lysdemolab.fr
+    port:
       name: https
+      number: 443
       protocol: HTTPS
     tls:
+      credentialName: istio-ingressgateway-certs
       mode: SIMPLE
-      credentialName: ingress-cert # This should match the Certificate secretName
-    hosts:
-    - my.example.com # This should match a DNS name in the Certificate
 ```    
     
     
