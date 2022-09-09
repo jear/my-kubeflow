@@ -7,7 +7,11 @@
 
     kubectl edit -n kubeflow gateways.networking.istio.io kubeflow-gateway
 
-    
+# cert-manager
+    k apply -f my-certificate.yaml
+
+
+# Istio Troubleshooting    
     # Edit the spec.trafficPolicy.tls.mode section, changing its value from ISTIO_MUTUAL to DISABLE
     kubectl get destinationrule -n kubeflow
     NAME                              HOST                                                         AGE
