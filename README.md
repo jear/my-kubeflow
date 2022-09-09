@@ -9,8 +9,27 @@
 
 # cert-manager
     k apply -f my-certificate.yaml
-
-
+```
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: ingress-cert # This should match the Certificate secretName
+    hosts:
+    - my.example.com # This should match a DNS name in the Certificate
+```    
+    
+    
 # Istio Troubleshooting    
     # Edit the spec.trafficPolicy.tls.mode section, changing its value from ISTIO_MUTUAL to DISABLE
     kubectl get destinationrule -n kubeflow
