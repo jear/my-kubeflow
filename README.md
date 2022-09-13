@@ -3,8 +3,18 @@
     # https://github.com/kubeflow/manifests#connect-to-your-kubeflow-cluster
 
 # cert-manager   
+```
+# clean gw, cert andd secrets
+# beware of the namespace used... 
+k delete -f kubeflow-gateway-cert-manager.yaml
+k delete -f my-certificate-kubeflow-CN.yaml
+k delete secrets  -n kubeflow istio-ingressgateway-certs
+
+
+k apply -f my-certificate-istio-system-CN.yaml
+k apply -f kubeflow-gateway-cert-manager.yaml
+```
     # https://istio.io/latest/docs/ops/integrations/certmanager/
-    k apply -f my-certificate.yaml
 
 # Istio Certificates  and to avoid   XSRF-TOKEN errors
     # https://www.civo.com/learn/get-up-and-running-with-kubeflow-on-civo-kubernetes

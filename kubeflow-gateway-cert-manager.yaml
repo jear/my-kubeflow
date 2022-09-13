@@ -1,15 +1,8 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  annotations:
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"networking.istio.io/v1alpha3","kind":"Gateway","metadata":{"annotations":{},"name":"kubeflow-gateway","namespace":"kubeflow"},"spec":{"selector":{"istio":"ingressgateway"},"servers":[{"hosts":["*"],"port":{"name":"http","number":80,"protocol":"HTTP"}}]}}
-  creationTimestamp: "2022-09-02T14:36:35Z"
-  generation: 4
   name: kubeflow-gateway
   namespace: kubeflow
-  resourceVersion: "17627798"
-  uid: 0d277197-2231-448d-8903-3ac9e7514ed4
 spec:
   selector:
     istio: ingressgateway

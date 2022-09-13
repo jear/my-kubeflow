@@ -4,14 +4,13 @@ metadata:
   name: istio-ingressgateway-certs
   namespace: istio-system
 spec:
-  #commonName: istio-ingressgateway.istio-system.svc
-  commonName: kubeflow.gpu01.lysdemolab.fr
+  commonName: istio-ingressgateway.istio-system.svc
   # Use ipAddresses if your LoadBalancer issues an IP
   ipAddresses:
   - 10.69.41.70
   # Use dnsNames if your LoadBalancer issues a hostname 
-  #dnsNames:
-  #- kubeflow.gpu01.lysdemolab.fr
+  dnsNames:
+  - kubeflow.gpu01.lysdemolab.fr
   isCA: true
   issuerRef:
     kind: ClusterIssuer
