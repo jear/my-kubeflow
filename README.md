@@ -6,6 +6,8 @@
 ```
 # clean gw, cert andd secrets
 # beware of the namespace used... 
+# Once done, you can get the cert from your browser and add it to yout trusted root
+
 k delete -f kubeflow-gateway-cert-manager.yaml
 k delete -f my-certificate-kubeflow-CN.yaml
 k delete secrets  -n kubeflow istio-ingressgateway-certs
