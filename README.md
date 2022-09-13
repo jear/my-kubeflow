@@ -6,7 +6,7 @@
 ```
 # clean gw, cert andd secrets
 # beware of the namespace used... 
-# Once done, you can get the cert from your browser and add it to yout local computer trusted root certification authorities
+# Once done, you can get the cert from your browser and add it to your local computer trusted root certification authorities
 
 k delete -f kubeflow-gateway-cert-manager.yaml
 k delete -f my-certificate-kubeflow-CN.yaml
